@@ -13,10 +13,8 @@ class SearchBar extends Component {
     this.googleAutoSuggest = this.googleAutoSuggest.bind(this)
     this.videoSearch = this.videoSearch.bind(this)
     this.state = {
-      videos: [],
       autoSuggest: [],
-      inputValue: '',
-      selectedVideo: null
+      inputValue: ''
     }
   }
 
@@ -27,14 +25,9 @@ class SearchBar extends Component {
       key: KEY,
       term: term,
     }, (videos) => {
-      console.log(videos)
-      this.setState({
-        videos,
-        selectedVideo: videos[0],
-      })
+      this.props.handleVideos(videos)
     })
   }
-
 
   mapAutoSuggest(items) {
     const mapped = items[1].map(item => item[0])

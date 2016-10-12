@@ -28,7 +28,7 @@ class AppBarTop extends Component {
           // titleStyle={}
           onLeftIconButtonTouchTap={this.handleToggle}
           iconElementLeft={<IconButton onMouseOver={this.handleOpen}><MenuIcon/></IconButton>}
-          iconElementRight={<RaisedButton label="Sign Into Youtube" primary={true} />}
+          iconElementRight={<RaisedButton label="Sign Into Youtube" secondary={true} />}
         />
         <DrawerLeft
           open={this.state.open}
