@@ -12,8 +12,9 @@ const googleAutoSuggestURL = 'http://suggestqueries.google.com/complete/search?c
 
 class SearchBar extends Component {
   constructor(props) {
-    super(props);
-    this.onUpdateInput = this.onUpdateInput.bind(this)
+    super(props)
+    this.googleAutoSuggest = this.googleAutoSuggest.bind(this)
+    this.videoSearch   = this.videoSearch.bind(this)
     this.state = {
       videos: [],
       autoSuggest: [],
@@ -22,19 +23,28 @@ class SearchBar extends Component {
     }
   }
 
-  // videoSearch(term) {
-  //   YTSearch({
-  //     key: KEY,
-  //     term: term,
-  //   }, (videos) => {
-  //     this.setState({
-  //       videos,
-  //       selectedVideo: videos[0],
-  //     });
-  //   });
-  // }
+  videoSearch(term) {
+    console.log(term)
+    YTSearch({
+      key: KEY,
+      term: term,
+    }, (videos) => {
+      console.log(videos)
+      this.setState({
+        videos,
+        selectedVideo: videos[0],
+      })
+    })
+  }
 
-  onUpdateInput(inputValue) {
+
+  mapAutoSuggest(items) {
+    const mapped = items[1].map(item => item[0])
+    this.setState({autoSuggest: mapped})
+  }
+
+
+  googleAutoSuggest(inputValue) {
     //this.videoSearch(inputValue)
     // axios(`${googleAutoSuggestURL}${inputValue}`).then(val => console.log(val))
     const url = googleAutoSuggestURL + inputValue
@@ -42,15 +52,6 @@ class SearchBar extends Component {
       JSONP(url, (error, data) => this.mapAutoSuggest(data))
     }
   }
-
-  mapAutoSuggest(items) {
-    const mapped = items[1].map(item => item[0])
-    this.setState({autoSuggest: mapped})
-    console.log(mapped)
-  }
-
-
-  googleAutoSuggest() {}
 
 
   render() {
@@ -60,8 +61,8 @@ class SearchBar extends Component {
           floatingLabelText="Search"
           filter={AutoComplete.fuzzyFilter}
           dataSource={this.state.autoSuggest}
-          onUpdateInput={this.onUpdateInput}
-          maxSearchResults={20}
+          onUpdateInput={this.googleAutoSuggest}
+          onNewRequest={this.videoSearch}
         />
       </div>
     )
