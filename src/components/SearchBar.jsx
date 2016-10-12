@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 import YTSearch from 'youtube-api-search'
 import JSONP from 'jsonp'
@@ -60,6 +60,10 @@ class SearchBar extends Component {
       </div>
     )
   }
+}
+
+SearchBar.propTypes = {
+  handleVideos: PropTypes.func.isRequired
 }
 
 export default SearchBar

@@ -7,8 +7,11 @@
   },
   "dependencies": {
     "jsonp": "^0.2.0",
+    "material-ui": "^0.16.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-tap-event-plugin": "^1.0.0",
+    "youtube-api-search": "0.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import {GridList, GridTile} from 'material-ui/GridList'
 import IconButton from 'material-ui/IconButton'
 // import Subheader from 'material-ui/Subheader'
@@ -38,5 +38,9 @@ const VideoGrid = ({tilesData}) => (
     </GridList>
   </div>
 )
+
+VideoGrid.propTypes = {
+  tilesData: PropTypes.array.isRequired
+}
 
 export default VideoGrid
