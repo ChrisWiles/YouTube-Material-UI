@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Drawer from 'material-ui/Drawer'
 
-export default class DrawerLeft extends Component {
+class DrawerLeft extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -10,14 +11,6 @@ export default class DrawerLeft extends Component {
   }
 
   handleOpen = () => this.setState({open: true})
-
-  handleClose = () => {
-    if(!this.state.subMenuOpen) {
-      this.props.close()
-    }
-  }
-
-
 
   render() {
     return (
@@ -31,3 +24,10 @@ export default class DrawerLeft extends Component {
     )
   }
 }
+
+DrawerLeft.propTypes = {
+  close: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
+}
+
+export default DrawerLeft
