@@ -1,20 +1,17 @@
 import React, {Component} from 'react'
-import _ from 'lodash'
 import AutoComplete from 'material-ui/AutoComplete'
 import YTSearch from 'youtube-api-search'
-import axios from 'axios'
 import JSONP from 'jsonp'
-
 
 const googleAutoSuggestURL = 'http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&q='
 
-// https://www.googleapis.com/youtube/v3/search
 
 class SearchBar extends Component {
+
   constructor(props) {
     super(props)
     this.googleAutoSuggest = this.googleAutoSuggest.bind(this)
-    this.videoSearch   = this.videoSearch.bind(this)
+    this.videoSearch = this.videoSearch.bind(this)
     this.state = {
       videos: [],
       autoSuggest: [],
@@ -22,6 +19,7 @@ class SearchBar extends Component {
       selectedVideo: null
     }
   }
+
 
   videoSearch(term) {
     console.log(term)
@@ -45,11 +43,13 @@ class SearchBar extends Component {
 
 
   googleAutoSuggest(inputValue) {
-    //this.videoSearch(inputValue)
-    // axios(`${googleAutoSuggestURL}${inputValue}`).then(val => console.log(val))
     const url = googleAutoSuggestURL + inputValue
     if (inputValue) {
-      JSONP(url, (error, data) => this.mapAutoSuggest(data))
+      JSONP(url, (error, data) => {
+        if (error)
+          return console.log(error)
+        this.mapAutoSuggest(data)
+      })
     }
   }
 

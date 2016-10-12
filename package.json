@@ -6,12 +6,9 @@
     "react-scripts": "0.6.1"
   },
   "dependencies": {
-    "axios": "^0.15.0",
     "jsonp": "^0.2.0",
-    "lodash": "^4.16.4",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "youtube-finder": "^1.0.0"
+    "react-dom": "^15.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
