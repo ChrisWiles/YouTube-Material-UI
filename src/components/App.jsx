@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ToolBarTop from './ToolBarTop'
 import SearchBar from './SearchBar'
 import VideoGrid from './VideoGrid'
+import VideoPlayer from './VideoPlayer'
 import './App.css'
 
 
@@ -9,19 +10,26 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    this.handleVideos = this.handleVideos.bind(this)
     this.state = {
-      videos: []
+      videos: [],
+      isVideoPlayerOpen: false,
+      videoID: "test"
     }
   }
 
-  handleVideos(videos) {
+  handleToggleVideoPlayer = () => this.setState({isVideoPlayerOpen: !this.state.isVideoPlayerOpen})
+
+  setVideoPlayerID = (videoID) => this.setState({videoID})
+
+  handleVideos = (videos) => {
     const mapped = videos.map(video => {
       const {id, snippet} = video
       return {
         id : id.videoId,
         title: snippet.title,
-        img: snippet.thumbnails.medium.url
+        img: snippet.thumbnails.medium.url,
+        description: snippet.description,
+        publishedAt: snippet.publishedAt
       }
     })
 
@@ -30,17 +38,16 @@ class App extends Component {
   }
 
   render() {
+    const {videos, isVideoPlayerOpen, videoID} = this.state
     return (
       <div>
         <ToolBarTop/>
         <SearchBar handleVideos={this.handleVideos}/>
-        <VideoGrid tilesData={this.state.videos}/>
+        <VideoGrid videos={videos} handleToggleVideoPlayer={this.handleToggleVideoPlayer} setID={this.setVideoPlayerID}/>
+        {videos[0] ? <VideoPlayer id={videoID} open={isVideoPlayerOpen} handleToggle={this.handleToggleVideoPlayer} /> : null}
       </div>
     )
   }
 }
 
 export default App
-// {img: 'images/grid-list/water-plant-821293_640.jpg',
-// title: 'Water plant',
-// author: 'BkrmadtyaKarki',}

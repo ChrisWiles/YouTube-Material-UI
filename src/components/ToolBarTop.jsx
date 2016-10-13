@@ -8,9 +8,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 class AppBarTop extends Component {
   constructor(props) {
     super(props)
-    this.handleToggle = this.handleToggle.bind(this)
-    this.handleClose = this.handleClose.bind(this)
-    this.handleOpen = this.handleOpen.bind(this)
     this.state = {open: false}
   }
 
