@@ -13,10 +13,11 @@ class DrawerLeft extends Component {
   handleOpen = () => this.setState({open: true})
 
   render() {
+    const {handleClose, isOpen} = this.props
     return (
-      <div onMouseLeave={this.handleClose}>
+      <div onMouseLeave={handleClose}>
         <Drawer
-          open={this.props.open}
+          open={isOpen}
           containerStyle={{height: 'calc(100% - 64px)', top: 64}}
          >
         </Drawer>
@@ -26,8 +27,8 @@ class DrawerLeft extends Component {
 }
 
 DrawerLeft.propTypes = {
-  close: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  handleClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
 }
 
 export default DrawerLeft

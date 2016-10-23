@@ -14,7 +14,7 @@ class VideoGridItem extends Component {
     const {title, img} = this.props.video
     return (
       <GridTile
-        title={title}
+        title={<h3>{title}</h3>}
         // subtitle={<span>by <b>{tile.author}</b></span>}
         onTouchTap={this.handleVideoPlayer}
       >

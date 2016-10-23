@@ -6,6 +6,7 @@ import DrawerLeft from './DrawerLeft'
 import RaisedButton from 'material-ui/RaisedButton'
 
 class AppBarTop extends Component {
+
   constructor(props) {
     super(props)
     this.state = {open: false}
@@ -28,9 +29,9 @@ class AppBarTop extends Component {
           iconElementRight={<RaisedButton label="Sign Into Youtube" secondary={true} />}
         />
         <DrawerLeft
-          open={this.state.open}
-          close={this.handleClose}
-          onToggleDrawer={this.handleToggle}
+          isOpen={this.state.open}
+          handleClose={this.handleClose}
+          // onToggleDrawer={this.handleToggle}
         />
       </div>
     )
