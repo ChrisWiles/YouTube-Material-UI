@@ -2,7 +2,7 @@
 
 Calls googleAutoSuggest when a user types, maps over googles auto suggest data and passes the array to Material UIs AutoComplete component
 
-See Live [Youtube Autocomplete](https://slider-puzzle.herokuapp.com/)
+See Live [Youtube Autocomplete](https://youtube-autocomplete.herokuapp.com/)
 
 ## Tech
 
