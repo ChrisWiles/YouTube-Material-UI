@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ToolBarTop from './ToolBarTop'
+// import ToolBarTop from './ToolBarTop'
 import SearchBar from './SearchBar'
 import VideoGrid from './VideoGrid'
 import VideoPlayer from './VideoPlayer'
@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <div>
         {/* <ToolBarTop/> */}
-        <SearchBar className="SearchBar" handleVideos={this.handleVideos}/>
+        <SearchBar  handleVideos={this.handleVideos}/>
         <VideoGrid videos={videos} handleToggleVideoPlayer={this.handleToggleVideoPlayer} setID={this.setVideoPlayerID}/>
         {videos[0] ? <VideoPlayer id={videoID} open={isVideoPlayerOpen} handleToggle={this.handleToggleVideoPlayer} /> : null}
       </div>
