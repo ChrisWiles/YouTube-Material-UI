@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.SearchBar {
+  margin: auto !important;
+  display: flex !important;
+}

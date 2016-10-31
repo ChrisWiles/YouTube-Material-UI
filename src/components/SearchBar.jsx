@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 import YTSearch from 'youtube-api-search'
 import JSONP from 'jsonp'
-
+const KEY = 'AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU'
 const googleAutoSuggestURL = 'http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&q='
 
 
@@ -10,8 +10,6 @@ class SearchBar extends Component {
 
   constructor(props) {
     super(props)
-    this.googleAutoSuggest = this.googleAutoSuggest.bind(this)
-    this.videoSearch = this.videoSearch.bind(this)
     this.state = {
       autoSuggest: [],
       inputValue: ''
@@ -19,8 +17,7 @@ class SearchBar extends Component {
   }
 
 
-  videoSearch(term) {
-    console.log(term)
+  videoSearch = (term) =>{
     YTSearch({
       key: KEY,
       term: term,
@@ -35,7 +32,7 @@ class SearchBar extends Component {
   }
 
 
-  googleAutoSuggest(inputValue) {
+  googleAutoSuggest = (inputValue) => {
     const url = googleAutoSuggestURL + inputValue
     if (inputValue) {
       JSONP(url, (error, data) => {

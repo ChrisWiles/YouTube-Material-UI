@@ -3,8 +3,6 @@ import ToolBarTop from './ToolBarTop'
 import SearchBar from './SearchBar'
 import VideoGrid from './VideoGrid'
 import VideoPlayer from './VideoPlayer'
-import './App.css'
-
 
 class App extends Component {
 
@@ -34,15 +32,14 @@ class App extends Component {
     })
 
     this.setState({videos: mapped})
-    console.log(mapped)
   }
 
   render() {
     const {videos, isVideoPlayerOpen, videoID} = this.state
     return (
       <div>
-        <ToolBarTop/>
-        <SearchBar handleVideos={this.handleVideos}/>
+        {/* <ToolBarTop/> */}
+        <SearchBar className="SearchBar" handleVideos={this.handleVideos}/>
         <VideoGrid videos={videos} handleToggleVideoPlayer={this.handleToggleVideoPlayer} setID={this.setVideoPlayerID}/>
         {videos[0] ? <VideoPlayer id={videoID} open={isVideoPlayerOpen} handleToggle={this.handleToggleVideoPlayer} /> : null}
       </div>
